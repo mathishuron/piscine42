@@ -26,19 +26,23 @@ int	ft_is_in(char c, char *str)
 	return (0);
 }
 
-void	my_copy(char *dst, char *str, int *i, int *j)
+char	**my_copy(char **dst, char *str, int *i, int *j)
 {
 	int	k;
 
-	dst = (char *)malloc((*j + 1) * sizeof(char));
+	*dst = NULL;
+	*dst = (char *)malloc((*j + 1) * sizeof(char));
+	if (!*dst)
+		return (NULL);
 	k = 0;
 	while (k < *j)
 	{
-		dst[k] = str[*i + k];
+		(*dst)[k] = str[*i + k];
 		k++;
 	}
-	dst[k] = '\0';
+	(*dst)[k] = '\0';
 	*i += *j;
+	return (dst);
 }
 
 int	nb_m(char *str, char *charset)
@@ -74,7 +78,9 @@ char	**ft_split(char *str, char *charset)
 
 	nb_mots = 0;
 	i = 0;
-	result = (char **)malloc(nb_m(str, charset) * sizeof(char *));
+	result = (char **)malloc((nb_m(str, charset) + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
 	while (str[i] != '\0')
 	{
 		if (ft_is_in(str[i], charset) == 1)
@@ -84,24 +90,9 @@ char	**ft_split(char *str, char *charset)
 			j = 0;
 			while (ft_is_in(str[i + j], charset) == 0)
 				j++;
-			my_copy(result[nb_mots], str, &i, &j);
-			nb_mots++;
+			my_copy(result + nb_mots++, str, &i, &j);
 		}
 	}
-	result[nb_mots] = (char *)malloc(sizeof(char));
-	result[nb_mots][0] = '\0';
+	result[nb_mots] = NULL;
 	return (result);
-}
-
-#include <stdio.h>
-int	main(void)
-{
-	int i = 0;
-	char **c = ft_split("bonjour je-suis  b-- --eau","- ");
-	while(c[i][0] != '\0')
-	{
-		printf("%s\n", c[i]);
-		i++;
-	}
-	free(c);
 }

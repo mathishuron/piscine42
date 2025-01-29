@@ -12,20 +12,21 @@
 
 #include <stdlib.h>
 
-int	*ft_ultimate_range(int **range, int min, int max)
+int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	i;
 
 	i = min;
+	*range = NULL;
 	if (max <= min)
-		return (NULL);
+		return (0);
 	*range = malloc((max - min) * sizeof(int));
 	if (!*range)
-		return (NULL);
+		return (-1);
 	while (i < max)
 	{
 		(*range)[i - min] = i;
 		i++;
 	}
-	return (*range);
+	return (max - min);
 }

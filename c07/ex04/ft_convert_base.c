@@ -16,7 +16,7 @@ int	ft_atoi_base(char *str, char *base);
 int	check_base(char *base);
 int	ft_strlen(char *str);
 
-void	recursive_alloc(int n, int *i, char *result ,char *base)
+void	recursive_alloc(int n, int *i, char *result, char *base)
 {
 	if (n <= -ft_strlen(base))
 	{
