@@ -6,7 +6,7 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:54:52 by mhuron            #+#    #+#             */
-/*   Updated: 2025/01/30 15:27:53 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/01/31 11:10:22 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strlen(char *str)
 	int	size;
 
 	size = 0;
+	if (str == NULL)
+		return (0);
 	while (str[size] != '\0')
 		size++;
 	return (size);
@@ -27,6 +29,8 @@ char	*ft_strcpy(char *dest, char *src)
 	int	i;
 
 	i = 0;
+	if (dest == NULL || src == NULL)
+		return (NULL);
 	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
@@ -43,6 +47,8 @@ int	total_size(int size, char **strs, char *sep)
 
 	i = 0;
 	taille_totale = 0;
+	if (sep == NULL || strs == NULL)
+		return (0);
 	while (i < size)
 	{
 		taille_totale += ft_strlen(strs[i]);

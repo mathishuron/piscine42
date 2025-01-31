@@ -6,7 +6,7 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:53:15 by mhuron            #+#    #+#             */
-/*   Updated: 2025/01/29 14:04:42 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/01/31 11:30:55 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,23 @@ void	recursive_alloc(int n, int *i, char *result, char *base)
 	result[*i + 1] = '\0';
 }
 
+int	taille_nb(int nb, char *base)
+{
+	int	size;
+
+	size = 1;
+	if (nb < 0)
+		size++;
+	else
+		nb = -nb;
+	while (nb <= -ft_strlen(base))
+	{
+		nb = nb / ft_strlen(base);
+		size++;
+	}
+	return (size);
+}
+
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	char	*nbr_base;
@@ -38,7 +55,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	if (check_base(base_from) == 0 || check_base(base_to) == 0)
 		return (NULL);
 	nbr_10 = ft_atoi_base(nbr, base_from);
-	nbr_base = (char *)malloc(34 * sizeof(char));
+	nbr_base = (char *)malloc((taille_nb(nbr_10, base_to) + 1) * sizeof(char));
 	if (nbr_base == 0)
 		return (NULL);
 	if (nbr_10 < 0)
