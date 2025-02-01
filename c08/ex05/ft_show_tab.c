@@ -6,7 +6,7 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:38:14 by mhuron            #+#    #+#             */
-/*   Updated: 2025/01/31 12:18:35 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/02/01 19:23:58 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	ft_putnbr(int nbr)
 		nbr = nbr * -1;
 	recursive_display(nbr);
 }
-
 
 void	ft_show_tab(struct s_stock_str *par)
 {

@@ -6,7 +6,7 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:15:32 by mhuron            #+#    #+#             */
-/*   Updated: 2025/01/31 12:30:12 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/02/01 19:22:13 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ char	*ft_strdup(char **src, int n)
 	if (dup == NULL)
 	{
 		while (k < n - 1)
-		{
-			free(src[k]);
-			k++;
-		}
+			free(src[k++]);
 		return (NULL);
 	}
 	while (src[n][i] != '\0')
@@ -55,9 +52,9 @@ char	*ft_strdup(char **src, int n)
 
 struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	int	i;
 	t_stock_str	*str_array;
-	
+	int			i;
+
 	i = 0;
 	str_array = NULL;
 	str_array = (t_stock_str *)malloc((ac + 1) * sizeof(t_stock_str));
