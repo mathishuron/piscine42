@@ -13,9 +13,15 @@
 #ifndef FT_SPLIT_H
 # define FT_SPLIT_H
 
-int		is_in(char c, char *str);
-char	**my_copy(char **dst, char *str, int *i, int *j);
-int		nb_m(char *str, char *charset);
-char	**ft_split(char *str, char *charset);
+typedef struct s_dict
+{
+	char	*number;
+	char	*letters;
+}	t_dict;
+
+int		is_in(char c);
+int		my_copy_nb(t_dict *dst, char *str);
+int		my_copy_lt(t_dict *dst, char *str, int *curr);
+t_dict	*ft_split(char *str, int size);
 
 #endif

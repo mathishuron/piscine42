@@ -10,14 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "load_dict.h"
 #include "ft_split.h"
-
-typedef struct s_dict
-{
-	char	*number;
-	char	*letters;
-}	t_dict;
 
 int	ft_strlen(char *str)
 {
@@ -48,14 +43,49 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-s_dict	**parser(char *my_dict)
+int	occ_char(char *str, char c)
+{
+	int	occ;
+
+	occ = 0;
+	while (*str != '\0')
+	{
+		if (*str == c)
+			occ++;
+		str++;
+	}
+	return (occ);
+}
+
+t_dict	*parser(char *dict_name)
 {
 	char	*text_dict;
-	s_dict	**parsed_dict;
+	t_dict	*parsed_dict;
 
-	text_dict = full_dict(my_dict);
-	//compter le nombre de :
-	//ft split avec whitespace et :
-	//boucle alloc mon ** s dict
-	//free le ft_split
+	text_dict = full_dict(dict_name);
+	parsed_dict = ft_split(text_dict, occ_char(text_dict, ':'));
+	free(text_dict);
+	return (parsed_dict);
+}
+
+#include <stdio.h>
+
+int	main(int argc, char **argv)
+{
+	t_dict	*parsed;
+	int		i;
+
+	i = 0;
+	if (argc > 1)
+		parsed = parser(argv[1]);
+	while (parsed[i].number != NULL)
+	{
+		printf("%s corresponds to ", parsed[i].number);
+		free(parsed[i].number);
+		printf("%s\n", parsed[i].letters);
+		free(parsed[i].letters);
+		i++;
+	}
+	free(parsed);
+	return (0);
 }

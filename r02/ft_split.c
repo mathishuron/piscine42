@@ -11,11 +11,14 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "ft_split.h"
 
-int	is_in(char c, char *str)
+int	is_in(char c)
 {
-	int	i;
+	int		i;
+	char	*str;
 
+	str = " :\n";
 	i = 0;
 	while (str[i] != '\0')
 	{
@@ -26,73 +29,75 @@ int	is_in(char c, char *str)
 	return (0);
 }
 
-char	**my_copy(char **dst, char *str, int *i, int *j)
+int	my_copy_nb(t_dict *dst, char *str)
 {
 	int	k;
+	int	j;
 
-	*dst = NULL;
-	*dst = (char *)malloc((*j + 1) * sizeof(char));
-	if (!*dst)
-		return (NULL);
 	k = 0;
-	while (k < *j)
+	j = 0;
+	while (is_in(str[j]) == 0 && str[j])
+		j++;
+	(*dst).number = (char *)malloc((j + 1) * sizeof(char));
+	if (!(*dst).number)
+		return (0);
+	while (k < j)
 	{
-		(*dst)[k] = str[*i + k];
+		(*dst).number[k] = str[k];
 		k++;
 	}
-	(*dst)[k] = '\0';
-	*i += *j;
-	return (dst);
+	(*dst).number[k] = '\0';
+	return (k);
 }
 
-int	nb_m(char *str, char *charset)
+int	my_copy_lt(t_dict *dst, char *str, int	*curr)
 {
-	int	i;
+	int	k;
 	int	j;
-	int	nb_mots;
 
-	i = 0;
-	nb_mots = 0;
-	while (str[i] != '\0')
+	k = 0;
+	j = 0;
+	while (is_in(str[j]) == 0 && str[j])
+		j++;
+	(*dst).letters = (char *)malloc((j + 1) * sizeof(char));
+	if (!(*dst).letters)
+		return (0);
+	while (k < j)
 	{
-		if (is_in(str[i], charset) == 1)
-			i++;
-		else
-		{
-			j = 0;
-			while (str[i + j] && is_in(str[i + j], charset) == 0)
-				j++;
-			i += j;
-			nb_mots++;
-		}
+		(*dst).letters[k] = str[k];
+		k++;
 	}
-	return (nb_mots);
+	(*dst).letters[k] = '\0';
+	*curr += 1;
+	return (k);
 }
 
-char	**ft_split(char *str, char *charset)
+t_dict	*ft_split(char *str, int size)
 {
-	char	**result;
+	t_dict	*result;
 	int		i;
-	int		j;
-	int		nb_mots;
+	int		cw;
+	int		flag;
 
-	nb_mots = 0;
+	cw = 0;
 	i = 0;
-	result = (char **)malloc((nb_m(str, charset) + 1) * sizeof(char *));
+	flag = 0;
+	result = (t_dict *)malloc((size + 1) * sizeof(t_dict));
 	if (!result)
 		return (NULL);
 	while (str[i] != '\0')
 	{
-		if (is_in(str[i], charset) == 1)
-			i++;
-		else
+		if (is_in(str[i]) == 0)
 		{
-			j = 0;
-			while (str[i + j] && is_in(str[i + j], charset) == 0)
-				j++;
-			my_copy(result + nb_mots++, str, &i, &j);
+			if (flag == 0)
+				i += my_copy_nb(&result[cw], str + i);
+			if (flag == 1)
+				i += my_copy_lt(&result[cw], str + i, &cw);
+			flag = 1 - flag;
 		}
+		else
+			i++;
 	}
-	result[nb_mots] = NULL;
+	result[cw].number = NULL;
 	return (result);
 }
