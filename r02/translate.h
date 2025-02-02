@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.h                                         :+:      :+:    :+:   */
+/*   translate.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 14:09:05 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/02 14:37:02 by mhuron           ###   ########.fr       */
+/*   Created: 2025/02/02 13:45:01 by mhuron            #+#    #+#             */
+/*   Updated: 2025/02/02 13:48:42 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SPLIT_H
-# define FT_SPLIT_H
+#ifndef TRANSLATE_H
+# define TRANSLATE_H
 
-typedef struct s_dict
-{
-	char	*number;
-	char	*letters;
-	int	pow;
-}	t_dict;
-
-int		is_in(char c);
-int		my_copy_nb(t_dict *dst, char *str);
-int		my_copy_lt(t_dict *dst, char *str, int *curr);
-t_dict	*ft_split(char *str, int size);
+void	ft_putstr(char *str);
+int	ft_strcmp(char *s1, char *s2);
+void	translate(char *str);
 
 #endif

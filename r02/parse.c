@@ -6,13 +6,14 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 00:50:36 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/02 01:02:10 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/02/02 13:47:03 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "load_dict.h"
 #include "ft_split.h"
+#include "translate.h"
 
 int	ft_strlen(char *str)
 {
@@ -72,20 +73,7 @@ t_dict	*parser(char *dict_name)
 
 int	main(int argc, char **argv)
 {
-	t_dict	*parsed;
-	int		i;
-
-	i = 0;
 	if (argc > 1)
-		parsed = parser(argv[1]);
-	while (parsed[i].number != NULL)
-	{
-		printf("%s corresponds to ", parsed[i].number);
-		free(parsed[i].number);
-		printf("%s\n", parsed[i].letters);
-		free(parsed[i].letters);
-		i++;
-	}
-	free(parsed);
+		translate(argv[1]);
 	return (0);
 }

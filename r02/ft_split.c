@@ -6,7 +6,7 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:09:05 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/01 22:56:07 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/02/02 14:38:12 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	my_copy_nb(t_dict *dst, char *str)
 		(*dst).number[k] = str[k];
 		k++;
 	}
+	(*dst).pow = k;
 	(*dst).number[k] = '\0';
 	return (k);
 }

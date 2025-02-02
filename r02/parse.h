@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.h                                         :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/29 14:09:05 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/02 14:37:02 by mhuron           ###   ########.fr       */
+/*   Created: 2025/02/02 13:52:22 by mhuron            #+#    #+#             */
+/*   Updated: 2025/02/02 13:54:06 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SPLIT_H
-# define FT_SPLIT_H
+#ifndef PARSE_H
+# define PARSE_H
 
-typedef struct s_dict
-{
-	char	*number;
-	char	*letters;
-	int	pow;
-}	t_dict;
-
-int		is_in(char c);
-int		my_copy_nb(t_dict *dst, char *str);
-int		my_copy_lt(t_dict *dst, char *str, int *curr);
-t_dict	*ft_split(char *str, int size);
+int	ft_strlen(char *str);
+char	*ft_strcpy(char *dest, char *src);
+int	occ_char(char *str, char c);
+t_dict	*parser(char *dict_name);
 
 #endif
