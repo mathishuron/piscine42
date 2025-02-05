@@ -6,7 +6,7 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:43:42 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/05 19:48:26 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/02/05 22:12:47 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,28 @@ void	ft_putstr(char *str)
 		write(1, str++, 1);
 }
 
+int	(*pos(char c))(int, int)
+{
+	char	*op;
+	int		i;
+	int		(*f[5])(int, int);
+
+	f[0] = &add;
+	f[1] = &sub;
+	f[2] = &mult;
+	f[3] = &div;
+	f[4] = &mod;
+	op = "+-*/%";
+	i = 0;
+	while (i < 5)
+	{
+		if (c == op[i])
+			return (f[i]);
+		i++;
+	}
+	return ((void *)0);
+}
+
 int	main(int argc, char **argv)
 {
 	int	a;
@@ -34,9 +56,9 @@ int	main(int argc, char **argv)
 
 	if (argc == 4)
 	{
+		f = pos(argv[2][0]);
 		a = ft_atoi(argv[1]);
 		b = ft_atoi(argv[3]);
-		f = select_f(argv[2]);
 		if (f == (void *)0)
 		{
 			ft_putnbr(0);
