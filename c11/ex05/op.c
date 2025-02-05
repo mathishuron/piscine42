@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   op.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 19:07:33 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/05 19:19:17 by mhuron           ###   ########.fr       */
+/*   Created: 2025/02/05 16:57:04 by mhuron            #+#    #+#             */
+/*   Updated: 2025/02/05 17:05:41 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	recursive_display(int n)
+int	add(int a, int b)
 {
-	int	a;
-
-	a = -(n % 10) + '0';
-	if (n <= -10)
-		recursive_display(n / 10);
-	write(1, &a, 1);
+	return (a + b);
 }
 
-void	ft_putnbr(int nb)
+int	sub(int a, int b)
 {
-	if (nb < 0)
-		write(1, "-", 1);
-	else
-		nb = nb * -1;
-	recursive_display(nb);
+	return (a - b);
+}
+
+int	mult(int a, int b)
+{
+	return (a * b);
+}
+
+int	div(int a, int b)
+{
+	return (a / b);
+}
+
+int	mod(int a, int b)
+{
+	return (a % b);
 }
