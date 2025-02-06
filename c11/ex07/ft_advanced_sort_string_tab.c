@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_string_tab.c                               :+:      :+:    :+:   */
+/*   ft_advanced_sort_string_tab.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:16:26 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/06 11:59:41 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/02/06 12:05:14 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_swap(char **a, char **b)
 	*b = c;
 }
 
-void	ft_sort_string_tab(char **tab)
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
 {
 	int	i;
 	int	j;
@@ -53,7 +53,7 @@ void	ft_sort_string_tab(char **tab)
 		j = i + 1;
 		while (j < size)
 		{
-			if (ft_strcmp(tab[i], tab[j]) > 0)
+			if (cmp(tab[i], tab[j]) > 0)
 				ft_swap(tab + i, tab + j);
 			j++;
 		}
