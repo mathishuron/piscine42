@@ -6,7 +6,7 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:19:14 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/04 16:27:01 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:10:05 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_count_if(char **tab, int length, int (*f)(char *))
 	i = 0;
 	while (i < length)
 	{
-		if (f(tab[i]) != 0)
+		if ((*f)(tab[i]) != 0)
 			count++;
 		i++;
 	}

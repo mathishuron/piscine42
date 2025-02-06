@@ -6,7 +6,7 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:43:42 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/06 12:15:13 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:15:40 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,17 @@ void	ft_putstr(char *str)
 		write(1, str++, 1);
 }
 
-t_fpoint	pos(char c)
+int	ft_strl(char *str)
+{
+	int	size;
+
+	size = 0;
+	while (str[size] != '\0')
+		size++;
+	return (size);
+}
+
+t_fpoint	pos(char *c)
 {
 	char	*op;
 	int		i;
@@ -42,7 +52,7 @@ t_fpoint	pos(char c)
 	i = 0;
 	while (i < 5)
 	{
-		if (c == op[i])
+		if (c[0] == op[i] && ft_strl(c) == 1)
 			return (f[i]);
 		i++;
 	}
@@ -57,7 +67,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 4)
 	{
-		f = pos(argv[2][0]);
+		f = pos(argv[2]);
 		a = ft_atoi(argv[1]);
 		b = ft_atoi(argv[3]);
 		if (f == (void *)0)
@@ -71,7 +81,7 @@ int	main(int argc, char **argv)
 			ft_putstr("Stop : modulo by zero\n");
 		else
 		{
-			ft_putnbr(f(a, b));
+			ft_putnbr((*f)(a, b));
 			ft_putstr("\n");
 		}
 	}

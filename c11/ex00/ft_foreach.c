@@ -6,7 +6,7 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:19:14 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/04 15:36:36 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/02/06 18:08:49 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_foreach(int *tab, int length, void (*f)(int))
 	i = 0;
 	while (i < length)
 	{
-		f(tab[i]);
+		(*f)(tab[i]);
 		i++;
 	}
 }
