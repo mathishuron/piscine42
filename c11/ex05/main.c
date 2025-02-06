@@ -6,11 +6,12 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:43:42 by mhuron            #+#    #+#             */
-/*   Updated: 2025/02/05 22:12:47 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/02/06 12:15:13 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "header.h"
 
 void	ft_putnbr(int nb);
 int		ft_atoi(char *str);
@@ -26,7 +27,7 @@ void	ft_putstr(char *str)
 		write(1, str++, 1);
 }
 
-int	(*pos(char c))(int, int)
+t_fpoint	pos(char c)
 {
 	char	*op;
 	int		i;
