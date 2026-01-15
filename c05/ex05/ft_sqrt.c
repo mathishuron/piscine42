@@ -6,7 +6,7 @@
 /*   By: mhuron <mhuron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:25:29 by mhuron            #+#    #+#             */
-/*   Updated: 2025/01/28 12:48:30 by mhuron           ###   ########.fr       */
+/*   Updated: 2025/01/28 17:39:10 by mhuron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,4 @@ int	ft_sqrt(int nb)
 		i++;
 	}
 	return (0);
-}
-
-#include <stdio.h>
-int	main(void)
-{
-	printf("%d\n",ft_sqrt(1));
 }
